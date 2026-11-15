@@ -1,0 +1,19 @@
+import { test, expect } from '@playwright/test';
+
+// test('syntax async/await', async ({ page }) => {
+//     async function loadUser() {
+//         const response = await fetch("http://localhost:4040/api/users/1")
+//         const user = await response.json()
+//         console.log(user)
+//     }
+//     loadUser()
+// });
+
+test('user can see main page after log in', async ({page}) => {
+    await page.goto('http://localhost:5173/auth/login')
+    await page.locator('#email').fill('goit@gmail.com')
+    await page.locator('#password').fill('Foodies2025!')
+    await page.getByRole('button',{ name: 'Login'}).click()
+
+    await expect(page.locator('a[href="/profile"]')).toBeVisible()
+});

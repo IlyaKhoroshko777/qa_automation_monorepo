@@ -1,4 +1,6 @@
-export const DEFAULT_USER = {
-        email: 'goit@gmail.com',
-        password: 'Foodies2025!',
-    }
+import { TestUser } from "../types/fixtures";
+
+export const DEFAULT_USER: TestUser = {
+  email: process.env.TEST_EMAIL ?? "",
+  password: process.env.TEST_PASSWORD ?? "",
+};
